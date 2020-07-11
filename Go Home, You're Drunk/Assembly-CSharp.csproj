@@ -593,6 +593,12 @@
     <Reference Include="UnityEditor.UI">
         <HintPath>C:/Users/Jesse/Desktop/Unity/GHYD/Go Home, You&apos;re Drunk/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>C:/Users/Jesse/Desktop/Unity/GHYD/Go Home, You&apos;re Drunk/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>C:/Users/Jesse/Desktop/Unity/GHYD/Go Home, You&apos;re Drunk/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
