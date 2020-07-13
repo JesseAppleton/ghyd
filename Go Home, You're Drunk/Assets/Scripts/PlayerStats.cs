@@ -5,52 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float maxHealth = 1;
-    public float currentHealth;
-    public float decayRate = 0.001f;
-
     public HealthBar healthBar;
     public Blackout blackout;
+    public float maxHealth;
+    public float currentHealth;
+    public float decayRate;
 
-    void Start() 
-    {
+    void Start(){
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        blackout.SetTransparency(0f);
     }
+
     // Called once per frame
     void Update()
     {
-        Decay(decayRate);
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(0.02f);
+        if(Input.GetKeyDown(KeyCode.Space)){
+            TakeDamage(2f);
         }
 
-        if(currentHealth <= 0)
-        {
+        if(currentHealth <= 0){
             GameOver();
         }
+
+        Decay(decayRate);
     }   
 
-    void Decay(float decayRate)
-    {
+    void Decay(float decayRate){
         currentHealth -= decayRate;
         healthBar.SetHealth(currentHealth);
-
-        Blackout blackout = GetComponent<Blackout>();
-        blackout.SetTransparency(currentHealth);
+        float transparency = ((maxHealth - currentHealth) / 1f);
+        blackout.SetTransparency( transparency ); 
     }
 
-    void TakeDamage(float damage)
-    {
+    void TakeDamage(float damage){
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
 
-    void GameOver()
-    {
-        Debug.Log("Game Over!");
+    void GameOver(){
+        Debug.Log("You lose!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

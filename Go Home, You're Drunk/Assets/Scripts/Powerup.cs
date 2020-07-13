@@ -5,20 +5,16 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     public GameObject pickupEffect;
+    public float heal;
+    public float duration;
 
-    public float heal = 0.02f;
-    public float duration = 4f;
-
-    void OnTriggerEnter (Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
+    void OnTriggerEnter (Collider other){
+        if (other.CompareTag("Player")){
             StartCoroutine( Pickup(other) );
         }
     }
 
-    IEnumerator Pickup(Collider player)
-    {
+    IEnumerator Pickup(Collider player){
         // Spawn effect
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
